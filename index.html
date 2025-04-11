@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Talent Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Background with an image representing talent (replace 'path/to/your-image.jpg' with actual image path) */
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background: url('https://via.placeholder.com/1920x1080/0000FF/808080?text=Talent+Gallery') no-repeat center center; */
+            background-size: cover;
+            z-index: 0;
+            filter: brightness(0.5);
+            /* Dim the image to make text more readable */
+            animation: zoomIn 20s ease-in-out infinite;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Particles background container */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            height: 100vh;
+            z-index: 2;
+        }
+
+        .title {
+            position: absolute;
+            top: 20%;
+            width: 100%;
+            text-align: center;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #00f0ff, #ffffff, #00f0ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: glowText 3s ease-in-out infinite;
+        }
+
+        @keyframes glowText {
+
+            0%,
+            100% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #00f0ff;
+            }
+
+            50% {
+                text-shadow: 0 0 20px #fff, 0 0 40px #00f0ff, 0 0 60px #00f0ff;
+            }
+        }
+
+
+
+
+        .button-container {
+            position: absolute;
+            bottom: 5%;
+            width: 100%;
+            text-align: center;
+        }
+
+        .explore-btn {
+            background: transparent;
+            border: 2px solid #0ff;
+            color: #0ff;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .explore-btn:hover {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background-color: #111;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        #gallery h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #0ff;
+        }
+
+        .gallery-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .gallery-items div {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-items div:hover {
+            transform: scale(1.05);
+            background-color: #0ff;
+            color: #000;
+        }
+
+        .srkr-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 15vw;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.08);
+            /* Reduced alpha to offset thickness */
+            letter-spacing: 10px;
+            z-index: 0;
+            text-align: center;
+            user-select: none;
+            pointer-events: none;
+            opacity: 1;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+            /* Adds visible stroke */
+            text-shadow:
+                1px 1px rgba(255, 255, 255, 0.1),
+                -1px -1px rgba(255, 255, 255, 0.1),
+                2px 2px rgba(255, 255, 255, 0.05),
+                -2px -2px rgba(255, 255, 255, 0.05);
+            /* Extra weight */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Image with Talent Theme -->
+    <div class="background-image"></div>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    <div class="srkr-watermark">SRKR</div>
+
+    <!-- Foreground Content -->
+    <div class="content">
+        <div class="title">Unleashing Student Talent</div>
+
+        <div class="button-container">
+            <a href="#gallery">
+                <button class="explore-btn">Explore Gallery</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2>Student Talent Gallery</h2>
+        <div class="gallery-items">
+            <div>🎨 Art by Aanya</div>
+            <div>💃 Dance by Rahul</div>
+            <div>🎤 Singing by Meera</div>
+            <div>📸 Photography by Jai</div>
+            <!-- Add more student works here -->
+        </div>
+    </section>
+
+    <!-- Particles.js Script -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize particles
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": { "enable": true, "value_area": 800 }
+                },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "out_mode": "out"
+                }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": { "enable": true, "mode": "repulse" },
+                    "onclick": { "enable": true, "mode": "push" }
+                },
+                "modes": {
+                    "repulse": { "distance": 100 },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
+        });
+    </script> -->
+
+</body>
+
+</html>
