@@ -1,0 +1,187 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Campus Talent Showcase</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Campus Talent Showcase</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="spotlight.html">Spotlight</a></li>
+                <li><a href="#" id="logoutLink">Logout</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="dashboard-container">
+            <h2>Welcome, <span id="userName">User</span>!</h2>
+            
+            <!-- Admin-only section -->
+            <div id="adminSection" style="display: none;">
+                <div class="dashboard-card">
+                    <h3>Admin Controls</h3>
+                    <p>Manage spotlights and user content</p>
+                    <a href="spotlight.html?manage=true" class="btn primary">Manage Spotlights</a>
+                </div>
+            </div>
+            
+            <!-- Host-only section -->
+            <div id="hostSection" style="display: none;">
+                <div class="dashboard-card">
+                    <h3>My Uploads</h3>
+                    <p>Manage your content and upload new talents</p>
+                    <a href="upload.html" class="btn primary">Upload New Content</a>
+                </div>
+                
+                <div class="user-content">
+                    <h3>Your Uploaded Content</h3>
+                    <div id="userUploads" class="content-grid">
+                        <!-- User uploads will be loaded here dynamically -->
+                        <p class="loading">Loading your content...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Guest-only section -->
+            <div id="guestSection" style="display: none;">
+                <div class="dashboard-card">
+                    <h3>Browse Talents</h3>
+                    <p>Explore and appreciate the creative works of your peers</p>
+                    <a href="gallery.html" class="btn primary">View Gallery</a>
+                </div>
+                
+                <div class="liked-content">
+                    <h3>Content You've Liked</h3>
+                    <div id="likedContent" class="content-grid">
+                        <!-- Liked content will be loaded here dynamically -->
+                        <p class="loading">Loading liked content...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Campus Talent Showcase. All rights reserved.</p>
+    </footer>
+
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            const currentUser = getCurrentUser();
+            if (!currentUser) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Update user name display
+            document.getElementById('userName').textContent = currentUser.name;
+            
+            // Show appropriate sections based on user role
+            if (currentUser.role === 'admin') {
+                document.getElementById('adminSection').style.display = 'block';
+            } else if (currentUser.role === 'host') {
+                document.getElementById('hostSection').style.display = 'block';
+                loadUserUploads();
+            } else {
+                document.getElementById('guestSection').style.display = 'block';
+                loadLikedContent();
+            }
+            
+            // Set up logout functionality
+            document.getElementById('logoutLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                logout();
+                window.location.href = 'index.html';
+            });
+        });
+        
+        function loadUserUploads() {
+            const uploadsContainer = document.getElementById('userUploads');
+            const currentUser = getCurrentUser();
+            const db = getDB();
+            
+            // Filter posts by current user
+            const userPosts = db.posts.filter(post => post.userId === currentUser.id);
+            
+            if (userPosts.length === 0) {
+                uploadsContainer.innerHTML = '<p>You haven\'t uploaded any content yet.</p>';
+                return;
+            }
+            
+            let html = '';
+            userPosts.forEach(post => {
+                const likesCount = db.likes.filter(like => like.postId === post.id).length;
+                const commentsCount = db.comments.filter(comment => comment.postId === post.id).length;
+                const isSpotlighted = db.spotlight.includes(post.id);
+                
+                html += `
+                <div class="content-card" data-id="${post.id}">
+                    <div class="content-image">
+                        <img src="${post.image}" alt="${post.title}">
+                    </div>
+                    <div class="content-info">
+                        <h4>${post.title}</h4>
+                        <p class="category">${post.category}</p>
+                        <div class="content-stats">
+                            <span>${likesCount} likes</span>
+                            <span>${commentsCount} comments</span>
+                        </div>
+                        ${isSpotlighted ? '<span class="spotlight-badge">In Spotlight</span>' : ''}
+                    </div>
+                </div>
+                `;
+            });
+            
+            uploadsContainer.innerHTML = html;
+        }
+        
+        function loadLikedContent() {
+            const likedContainer = document.getElementById('likedContent');
+            const currentUser = getCurrentUser();
+            const db = getDB();
+            
+            // Get posts that user has liked
+            const userLikes = db.likes.filter(like => like.userId === currentUser.id);
+            const likedPostIds = userLikes.map(like => like.postId);
+            const likedPosts = db.posts.filter(post => likedPostIds.includes(post.id));
+            
+            if (likedPosts.length === 0) {
+                likedContainer.innerHTML = '<p>You haven\'t liked any content yet.</p>';
+                return;
+            }
+            
+            let html = '';
+            likedPosts.forEach(post => {
+                const user = db.users.find(u => u.id === post.userId);
+                html += `
+                <div class="content-card" data-id="${post.id}">
+                    <div class="content-image">
+                        <img src="${post.image}" alt="${post.title}">
+                    </div>
+                    <div class="content-info">
+                        <h4>${post.title}</h4>
+                        <p class="author">By ${user ? user.name : 'Unknown Artist'}</p>
+                        <p class="category">${post.category}</p>
+                    </div>
+                </div>
+                `;
+            });
+            
+            likedContainer.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
