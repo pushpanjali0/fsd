@@ -1,38 +1,167 @@
-/* Responsive adjustments */
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        padding: 1rem;
-    }
+  header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
 
-    .logo {
-        margin-bottom: 1rem;
-    }
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+  }
 
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+  .hero {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
 
-    nav ul li {
-        margin: 0.3rem 0.5rem;
-    }
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
 
-    .spotlight-item {
-        grid-template-columns: 1fr;
-    }
+  .spotlight-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
-    .filter-bar {
-        flex-direction: column;
-        align-items: stretch;
-    }
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
 
-    .cta-buttons {
-        flex-direction: column;
-    }
+  .auth-container,
+  .upload-container {
+    padding: var(--spacing-lg);
+  }
 
-    .btn {
-        width: 100%;
-        margin-bottom: 0.5rem;
-    }
+  .content-grid,
+  .category-grid,
+  .spotlight-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+}
+
+/* === CUSTOM SCROLLBAR === */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* === ADDITIONAL DARK THEME ENHANCEMENTS === */
+/* Card hover effects */
+.category-card:hover,
+.spotlight-item:hover,
+.content-card:hover,
+.dashboard-card:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(141, 117, 255, 0.2);
+}
+
+/* Subtle glow for important elements */
+.btn.primary:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 3px rgba(141, 117, 255, 0.25);
+}
+
+/* Add subtle texture to elevated elements */
+.auth-container,
+.upload-container,
+.dashboard-card,
+.category-card,
+.spotlight-item,
+.content-card {
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+}
+
+/* Improve readability with text shadows for headings */
+h1,
+h2,
+h3 {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Visual separation for content sections */
+section {
+  position: relative;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+}
+
+/* Active element states */
+input:active,
+select:active,
+textarea:active,
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Night mode specific adjustments for images */
+.spotlight-image,
+.content-image {
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* Improve contrast for category badges */
+.category {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(18, 18, 18, 0.6);
+}
+
+/* Add gentle transitions between sections */
+@media (min-width: 768px) {
+  main {
+    background: radial-gradient(
+        circle at 10% 20%,
+        rgba(141, 117, 255, 0.03) 0%,
+        transparent 20%
+      ),
+      radial-gradient(
+        circle at 90% 60%,
+        rgba(255, 107, 107, 0.03) 0%,
+        transparent 20%
+      );
+  }
 }

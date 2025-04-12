@@ -1,87 +1,147 @@
 <!-- register.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register - Campus Talent Showcase</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <header>
-        <div class="logo">Campus Talent Showcase</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="spotlight.html">Spotlight</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="register.html" class="active">Register</a></li>
-            </ul>
-        </nav>
+      <div class="logo">
+        <svg class="logo-svg" viewBox="0 0 300 80">
+          <svg viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background shape -->
+            <rect x="5" y="15" width="290" height="50" rx="25" fill="#1a1a1a" />
+
+            <!-- Decorative accent elements -->
+            <circle cx="30" cy="40" r="18" fill="#6b48ff" opacity="0.8" />
+            <path
+              d="M 30 40 L 50 20 L 70 40 L 50 60 Z"
+              fill="#ff6b6b"
+              opacity="0.7"
+            />
+
+            <!-- Star accent -->
+            <path
+              d="M30,25 L33,33 L42,33 L35,38 L37,46 L30,42 L23,46 L25,38 L18,33 L27,33 Z"
+              fill="#ffd166"
+            />
+
+            <!-- Text elements -->
+            <text
+              x="80"
+              y="42"
+              font-family="'Playfair Display', serif"
+              font-size="22"
+              font-weight="700"
+              fill="#ffffff"
+            >
+              CAMPUS TALENT
+            </text>
+            <text
+              x="82"
+              y="60"
+              font-family="'Poppins', sans-serif"
+              font-size="12"
+              font-weight="400"
+              fill="#b3b3b3"
+            >
+              SHOWCASE
+            </text>
+
+            <!-- Creative elements to represent different art forms -->
+            <path
+              d="M260,30 C265,25 270,30 275,25 C280,20 285,25 290,20"
+              stroke="#4ecdc4"
+              stroke-width="2"
+              fill="none"
+            />
+            <rect x="265" y="40" width="4" height="15" rx="1" fill="#ff6b6b" />
+            <rect x="273" y="35" width="4" height="20" rx="1" fill="#8a5fff" />
+            <rect x="281" y="45" width="4" height="10" rx="1" fill="#ffd166" />
+          </svg>
+        </svg>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="spotlight.html">Spotlight</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="register.html" class="active">Register</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <section class="auth-container">
-            <h2>Create New Account</h2>
-            <form id="registerForm">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required minlength="6">
-                </div>
-                <div class="form-group">
-                    <label for="role">Account Type</label>
-                    <select id="role" name="role" required>
-                        <option value="guest">Guest (View Only)</option>
-                        <option value="host">Host (Can Upload Content)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn primary">Register</button>
-                </div>
-                <p class="auth-redirect">
-                    Already have an account? <a href="login.html">Login here</a>
-                </p>
-            </form>
-        </section>
+      <section class="auth-container">
+        <h2>Create New Account</h2>
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              minlength="6"
+            />
+          </div>
+          <div class="form-group">
+            <label for="role">Account Type</label>
+            <select id="role" name="role" required>
+              <option value="guest">Guest (View Only)</option>
+              <option value="host">Host (Can Upload Content)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn primary">Register</button>
+          </div>
+          <p class="auth-redirect">
+            Already have an account? <a href="login.html">Login here</a>
+          </p>
+        </form>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Campus Talent Showcase. All rights reserved.</p>
+      <p>&copy; 2025 Campus Talent Showcase. All rights reserved.</p>
     </footer>
 
     <script src="js/storage.js"></script>
     <script src="js/auth.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const registerForm = document.getElementById('registerForm');
+      document.addEventListener("DOMContentLoaded", function () {
+        const registerForm = document.getElementById("registerForm");
 
-            registerForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
-                const role = document.getElementById('role').value;
-                
-                const registerResult = register(name, email, password, role);
-                
-                if (registerResult.success) {
-                    alert('Registration successful! Please login.');
-                    window.location.href = 'login.html';
-                } else {
-                    alert('Registration failed: ' + registerResult.message);
-                }
-            });
+        registerForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          const role = document.getElementById("role").value;
+
+          const registerResult = register(name, email, password, role);
+
+          if (registerResult.success) {
+            alert("Registration successful! Please login.");
+            window.location.href = "login.html";
+          } else {
+            alert("Registration failed: " + registerResult.message);
+          }
         });
+      });
     </script>
-</body>
+  </body>
 </html>

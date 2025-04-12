@@ -1,62 +1,120 @@
 <!-- gallery.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gallery - Campus Talent Showcase</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <header>
-        <div class="logo">Campus Talent Showcase</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="gallery.html" class="active">Gallery</a></li>
-                <li><a href="spotlight.html">Spotlight</a></li>
-                <li><a href="login.html" id="loginLink">Login</a></li>
-                <li><a href="register.html" id="registerLink">Register</a></li>
-                <li><a href="#" id="logoutLink" style="display: none;">Logout</a></li>
-                <li><a href="dashboard.html" id="dashboardLink" style="display: none;">Dashboard</a></li>
-            </ul>
-        </nav>
+      <div class="logo">
+        <svg class="logo-svg" viewBox="0 0 300 80">
+          <svg viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background shape -->
+            <rect x="5" y="15" width="290" height="50" rx="25" fill="#1a1a1a" />
+
+            <!-- Decorative accent elements -->
+            <circle cx="30" cy="40" r="18" fill="#6b48ff" opacity="0.8" />
+            <path
+              d="M 30 40 L 50 20 L 70 40 L 50 60 Z"
+              fill="#ff6b6b"
+              opacity="0.7"
+            />
+
+            <!-- Star accent -->
+            <path
+              d="M30,25 L33,33 L42,33 L35,38 L37,46 L30,42 L23,46 L25,38 L18,33 L27,33 Z"
+              fill="#ffd166"
+            />
+
+            <!-- Text elements -->
+            <text
+              x="80"
+              y="42"
+              font-family="'Playfair Display', serif"
+              font-size="22"
+              font-weight="700"
+              fill="#ffffff"
+            >
+              CAMPUS TALENT
+            </text>
+            <text
+              x="82"
+              y="60"
+              font-family="'Poppins', sans-serif"
+              font-size="12"
+              font-weight="400"
+              fill="#b3b3b3"
+            >
+              SHOWCASE
+            </text>
+
+            <!-- Creative elements to represent different art forms -->
+            <path
+              d="M260,30 C265,25 270,30 275,25 C280,20 285,25 290,20"
+              stroke="#4ecdc4"
+              stroke-width="2"
+              fill="none"
+            />
+            <rect x="265" y="40" width="4" height="15" rx="1" fill="#ff6b6b" />
+            <rect x="273" y="35" width="4" height="20" rx="1" fill="#8a5fff" />
+            <rect x="281" y="45" width="4" height="10" rx="1" fill="#ffd166" />
+          </svg>
+        </svg>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html" class="active">Gallery</a></li>
+          <li><a href="spotlight.html">Spotlight</a></li>
+          <li><a href="login.html" id="loginLink">Login</a></li>
+          <li><a href="register.html" id="registerLink">Register</a></li>
+          <li><a href="#" id="logoutLink" style="display: none">Logout</a></li>
+          <li>
+            <a href="dashboard.html" id="dashboardLink" style="display: none"
+              >Dashboard</a
+            >
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <section class="gallery-container">
-            <h2>Talent Gallery</h2>
-            
-            <div class="filter-bar">
-                <div class="filter-group">
-                    <label for="categoryFilter">Category:</label>
-                    <select id="categoryFilter">
-                        <option value="all">All Categories</option>
-                        <option value="Visual Arts">Visual Arts</option>
-                        <option value="Music">Music</option>
-                        <option value="Writing">Writing</option>
-                        <option value="Performance">Performance</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="sortFilter">Sort By:</label>
-                    <select id="sortFilter">
-                        <option value="newest">Newest First</option>
-                        <option value="oldest">Oldest First</option>
-                        <option value="mostLiked">Most Liked</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div id="galleryGrid" class="content-grid">
-                <!-- Gallery items will be loaded here dynamically -->
-                <p class="loading">Loading gallery...</p>
-            </div>
-        </section>
+      <section class="gallery-container">
+        <h2>Talent Gallery</h2>
+
+        <div class="filter-bar">
+          <div class="filter-group">
+            <label for="categoryFilter">Category:</label>
+            <select id="categoryFilter">
+              <option value="all">All Categories</option>
+              <option value="Visual Arts">Visual Arts</option>
+              <option value="Music">Music</option>
+              <option value="Writing">Writing</option>
+              <option value="Performance">Performance</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="sortFilter">Sort By:</label>
+            <select id="sortFilter">
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+              <option value="mostLiked">Most Liked</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="galleryGrid" class="content-grid">
+          <!-- Gallery items will be loaded here dynamically -->
+          <p class="loading">Loading gallery...</p>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Campus Talent Showcase. All rights reserved.</p>
+      <p>&copy; 2025 Campus Talent Showcase. All rights reserved.</p>
     </footer>
 
     <script src="js/storage.js"></script>
@@ -64,130 +122,165 @@
     <script src="js/common.js"></script>
     <script src="js/gallery.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            updateNavigation();
-            loadGallery();
-            
-            // Set up filter event listeners
-            document.getElementById('categoryFilter').addEventListener('change', loadGallery);
-            document.getElementById('sortFilter').addEventListener('change', loadGallery);
-        });
-        
-        function loadGallery() {
-            const galleryGrid = document.getElementById('galleryGrid');
-            const categoryFilter = document.getElementById('categoryFilter').value;
-            const sortFilter = document.getElementById('sortFilter').value;
-            const db = getDB();
-            const currentUser = getCurrentUser();
-            
-            // Apply category filter
-            let filteredPosts = db.posts;
-            if (categoryFilter !== 'all') {
-                filteredPosts = filteredPosts.filter(post => post.category === categoryFilter);
-            }
-            
-            // Apply sorting
-            if (sortFilter === 'newest') {
-                filteredPosts.sort((a, b) => b.createdAt - a.createdAt);
-            } else if (sortFilter === 'oldest') {
-                filteredPosts.sort((a, b) => a.createdAt - b.createdAt);
-            } else if (sortFilter === 'mostLiked') {
-                filteredPosts.sort((a, b) => {
-                    const aLikes = db.likes.filter(like => like.postId === a.id).length;
-                    const bLikes = db.likes.filter(like => like.postId === b.id).length;
-                    return bLikes - aLikes;
-                });
-            }
-            
-            if (filteredPosts.length === 0) {
-                galleryGrid.innerHTML = '<p>No content matches your filters.</p>';
-                return;
-            }
-            
-            let html = '';
-            filteredPosts.forEach(post => {
-                const user = db.users.find(u => u.id === post.userId);
-                const likesCount = db.likes.filter(like => like.postId === post.id).length;
-                const commentsCount = db.comments.filter(comment => comment.postId === post.id).length;
-                const isSpotlighted = db.spotlight.includes(post.id);
-                const hasLiked = currentUser && db.likes.some(like => 
-                    like.postId === post.id && like.userId === currentUser.id);
-                
-                html += `
+      document.addEventListener("DOMContentLoaded", function () {
+        updateNavigation();
+
+        // Check for category from query params
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get("category");
+
+        if (category) {
+          document.getElementById("categoryFilter").value = category;
+        }
+
+        loadGallery();
+
+        document
+          .getElementById("categoryFilter")
+          .addEventListener("change", loadGallery);
+        document
+          .getElementById("sortFilter")
+          .addEventListener("change", loadGallery);
+      });
+
+      function loadGallery() {
+        const galleryGrid = document.getElementById("galleryGrid");
+        const categoryFilter = document.getElementById("categoryFilter").value;
+        const sortFilter = document.getElementById("sortFilter").value;
+        const db = getDB();
+        const currentUser = getCurrentUser();
+
+        // Apply category filter
+        let filteredPosts = db.posts;
+        if (categoryFilter !== "all") {
+          filteredPosts = filteredPosts.filter(
+            (post) => post.category === categoryFilter
+          );
+        }
+
+        // Apply sorting
+        if (sortFilter === "newest") {
+          filteredPosts.sort((a, b) => b.createdAt - a.createdAt);
+        } else if (sortFilter === "oldest") {
+          filteredPosts.sort((a, b) => a.createdAt - b.createdAt);
+        } else if (sortFilter === "mostLiked") {
+          filteredPosts.sort((a, b) => {
+            const aLikes = db.likes.filter(
+              (like) => like.postId === a.id
+            ).length;
+            const bLikes = db.likes.filter(
+              (like) => like.postId === b.id
+            ).length;
+            return bLikes - aLikes;
+          });
+        }
+
+        if (filteredPosts.length === 0) {
+          galleryGrid.innerHTML = "<p>No content matches your filters.</p>";
+          return;
+        }
+
+        let html = "";
+        filteredPosts.forEach((post) => {
+          const user = db.users.find((u) => u.id === post.userId);
+          const likesCount = db.likes.filter(
+            (like) => like.postId === post.id
+          ).length;
+          const commentsCount = db.comments.filter(
+            (comment) => comment.postId === post.id
+          ).length;
+          const isSpotlighted = db.spotlight.includes(post.id);
+          const hasLiked =
+            currentUser &&
+            db.likes.some(
+              (like) =>
+                like.postId === post.id && like.userId === currentUser.id
+            );
+
+          html += `
                 <div class="content-card" data-id="${post.id}">
                     <div class="content-image">
                         <img src="${post.image}" alt="${post.title}">
                     </div>
                     <div class="content-info">
                         <h4>${post.title}</h4>
-                        <p class="author">By ${user ? user.name : 'Unknown Artist'}</p>
+                        <p class="author">By ${
+                          user ? user.name : "Unknown Artist"
+                        }</p>
                         <p class="category">${post.category}</p>
                         <div class="content-stats">
-                            <button class="like-btn ${hasLiked ? 'liked' : ''}" 
+                            <button class="like-btn ${hasLiked ? "liked" : ""}" 
                                 data-post-id="${post.id}" 
-                                ${currentUser ? '' : 'disabled'}>
+                                ${currentUser ? "" : "disabled"}>
                                 <span class="like-icon">❤</span>
                                 <span class="like-count">${likesCount}</span>
                             </button>
                             <span>${commentsCount} comments</span>
                         </div>
-                        ${isSpotlighted ? '<span class="spotlight-badge">In Spotlight</span>' : ''}
+                        ${
+                          isSpotlighted
+                            ? '<span class="spotlight-badge">In Spotlight</span>'
+                            : ""
+                        }
                     </div>
                 </div>
                 `;
+        });
+
+        galleryGrid.innerHTML = html;
+
+        // Set up like button event listeners
+        if (currentUser) {
+          const likeButtons = document.querySelectorAll(".like-btn");
+          likeButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+              const postId = this.getAttribute("data-post-id");
+              toggleLike(postId);
+
+              // Update UI
+              const hasLiked = this.classList.contains("liked");
+              if (hasLiked) {
+                this.classList.remove("liked");
+                const countEl = this.querySelector(".like-count");
+                countEl.textContent = parseInt(countEl.textContent) - 1;
+              } else {
+                this.classList.add("liked");
+                const countEl = this.querySelector(".like-count");
+                countEl.textContent = parseInt(countEl.textContent) + 1;
+              }
             });
-            
-            galleryGrid.innerHTML = html;
-            
-            // Set up like button event listeners
-            if (currentUser) {
-                const likeButtons = document.querySelectorAll('.like-btn');
-                likeButtons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        const postId = this.getAttribute('data-post-id');
-                        toggleLike(postId);
-                        
-                        // Update UI
-                        const hasLiked = this.classList.contains('liked');
-                        if (hasLiked) {
-                            this.classList.remove('liked');
-                            const countEl = this.querySelector('.like-count');
-                            countEl.textContent = parseInt(countEl.textContent) - 1;
-                        } else {
-                            this.classList.add('liked');
-                            const countEl = this.querySelector('.like-count');
-                            countEl.textContent = parseInt(countEl.textContent) + 1;
-                        }
-                    });
-                });
-            }
+          });
         }
-        
-        function toggleLike(postId) {
-            const db = getDB();
-            const currentUser = getCurrentUser();
-            
-            if (!currentUser) return;
-            
-            const existingLike = db.likes.find(like => 
-                like.postId === postId && like.userId === currentUser.id);
-            
-            if (existingLike) {
-                // Remove like
-                db.likes = db.likes.filter(like => 
-                    !(like.postId === postId && like.userId === currentUser.id));
-            } else {
-                // Add like
-                db.likes.push({
-                    id: generateId(),
-                    postId: postId,
-                    userId: currentUser.id,
-                    createdAt: Date.now()
-                });
-            }
-            
-            saveDB(db);
+      }
+
+      function toggleLike(postId) {
+        const db = getDB();
+        const currentUser = getCurrentUser();
+
+        if (!currentUser) return;
+
+        const existingLike = db.likes.find(
+          (like) => like.postId === postId && like.userId === currentUser.id
+        );
+
+        if (existingLike) {
+          // Remove like
+          db.likes = db.likes.filter(
+            (like) =>
+              !(like.postId === postId && like.userId === currentUser.id)
+          );
+        } else {
+          // Add like
+          db.likes.push({
+            id: generateId(),
+            postId: postId,
+            userId: currentUser.id,
+            createdAt: Date.now(),
+          });
         }
+
+        saveDB(db);
+      }
     </script>
-</body>
+  </body>
 </html>
