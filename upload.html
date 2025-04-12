@@ -1,176 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Upload Talent - Campus Talent Showcase</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <header>
-        <div class="logo">Campus Talent Showcase</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="spotlight.html">Spotlight</a></li>
-                <li><a href="#" id="logoutLink">Logout</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
-            </ul>
-        </nav>
+      <div class="logo">
+        <svg class="logo-svg" viewBox="0 0 300 80">
+          <svg viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background shape -->
+            <rect x="5" y="15" width="290" height="50" rx="25" fill="#1a1a1a" />
+
+            <!-- Decorative accent elements -->
+            <circle cx="30" cy="40" r="18" fill="#6b48ff" opacity="0.8" />
+            <path
+              d="M 30 40 L 50 20 L 70 40 L 50 60 Z"
+              fill="#ff6b6b"
+              opacity="0.7"
+            />
+
+            <!-- Star accent -->
+            <path
+              d="M30,25 L33,33 L42,33 L35,38 L37,46 L30,42 L23,46 L25,38 L18,33 L27,33 Z"
+              fill="#ffd166"
+            />
+
+            <!-- Text elements -->
+            <text
+              x="80"
+              y="42"
+              font-family="'Playfair Display', serif"
+              font-size="22"
+              font-weight="700"
+              fill="#ffffff"
+            >
+              CAMPUS TALENT
+            </text>
+            <text
+              x="82"
+              y="60"
+              font-family="'Poppins', sans-serif"
+              font-size="12"
+              font-weight="400"
+              fill="#b3b3b3"
+            >
+              SHOWCASE
+            </text>
+
+            <!-- Creative elements to represent different art forms -->
+            <path
+              d="M260,30 C265,25 270,30 275,25 C280,20 285,25 290,20"
+              stroke="#4ecdc4"
+              stroke-width="2"
+              fill="none"
+            />
+            <rect x="265" y="40" width="4" height="15" rx="1" fill="#ff6b6b" />
+            <rect x="273" y="35" width="4" height="20" rx="1" fill="#8a5fff" />
+            <rect x="281" y="45" width="4" height="10" rx="1" fill="#ffd166" />
+          </svg>
+        </svg>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="spotlight.html">Spotlight</a></li>
+          <li><a href="#" id="logoutLink">Logout</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <section class="upload-container">
-            <h2>Upload Your Talent</h2>
-            
-            <form id="uploadForm">
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" id="title" name="title" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="category">Category</label>
-                    <select id="category" name="category" required>
-                        <option value="">Select a category</option>
-                        <option value="Visual Arts">Visual Arts</option>
-                        <option value="Music">Music</option>
-                        <option value="Writing">Writing</option>
-                        <option value="Performance">Performance</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea id="description" name="description" rows="4" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="image">Upload Image</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
-                </div>
-                
-                <div class="preview-container">
-                    <h3>Preview</h3>
-                    <div class="image-preview">
-                        <img id="imagePreview" src="#" alt="Preview will appear here" style="display: none;">
-                        <p id="noPreview">No image selected</p>
-                    </div>
-                    <div class="content-preview">
-                        <h4 id="previewTitle">Title will appear here</h4>
-                        <p id="previewCategory" class="category">Category will appear here</p>
-                        <p id="previewDescription">Description will appear here</p>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <button type="submit" class="btn primary">Upload</button>
-                </div>
-            </form>
-        </section>
+      <section class="upload-container">
+        <h2>Upload Your Talent</h2>
+
+        <form id="uploadForm">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required />
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+              <option value="">Select a category</option>
+              <option value="Visual Arts">Visual Arts</option>
+              <option value="Music">Music</option>
+              <option value="Writing">Writing</option>
+              <option value="Performance">Performance</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              id="description"
+              name="description"
+              rows="4"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="image">Upload Image</label>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              required
+            />
+          </div>
+
+          <div class="preview-container">
+            <h3>Preview</h3>
+            <div class="image-preview">
+              <img
+                id="imagePreview"
+                src="#"
+                alt="Preview will appear here"
+                style="display: none"
+              />
+              <p id="noPreview">No image selected</p>
+            </div>
+            <div class="content-preview">
+              <h4 id="previewTitle">Title will appear here</h4>
+              <p id="previewCategory" class="category">
+                Category will appear here
+              </p>
+              <p id="previewDescription">Description will appear here</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn primary">Upload</button>
+          </div>
+        </form>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Campus Talent Showcase. All rights reserved.</p>
+      <p>&copy; 2025 Campus Talent Showcase. All rights reserved.</p>
     </footer>
 
     <script src="js/storage.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/common.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if user is logged in and is a host
-            const currentUser = getCurrentUser();
-            if (!currentUser) {
-                window.location.href = 'login.html';
-                return;
-            }
-            
-            if (currentUser.role !== 'host' && currentUser.role !== 'admin') {
-                alert('Only hosts can upload content.');
-                window.location.href = 'dashboard.html';
-                return;
-            }
-            
-            // Set up logout functionality
-            document.getElementById('logoutLink').addEventListener('click', function(e) {
-                e.preventDefault();
-                logout();
-                window.location.href = 'index.html';
-            });
-            
-            // Image preview
-            const imageInput = document.getElementById('image');
-            const imagePreview = document.getElementById('imagePreview');
-            const noPreview = document.getElementById('noPreview');
-            
-            imageInput.addEventListener('change', function() {
-                const file = this.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        imagePreview.src = e.target.result;
-                        imagePreview.style.display = 'block';
-                        noPreview.style.display = 'none';
-                    }
-                    reader.readAsDataURL(file);
-                }
-            });
-            
-            // Live preview for text fields
-            const titleInput = document.getElementById('title');
-            const categoryInput = document.getElementById('category');
-            const descriptionInput = document.getElementById('description');
-            
-            const previewTitle = document.getElementById('previewTitle');
-            const previewCategory = document.getElementById('previewCategory');
-            const previewDescription = document.getElementById('previewDescription');
-            
-            titleInput.addEventListener('input', function() {
-                previewTitle.textContent = this.value || 'Title will appear here';
-            });
-            
-            categoryInput.addEventListener('change', function() {
-                previewCategory.textContent = this.value || 'Category will appear here';
-            });
-            
-            descriptionInput.addEventListener('input', function() {
-                previewDescription.textContent = this.value || 'Description will appear here';
-            });
-            
-            // Form submission
-            const uploadForm = document.getElementById('uploadForm');
-            uploadForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const title = titleInput.value;
-                const category = categoryInput.value;
-                const description = descriptionInput.value;
-                const image = imagePreview.src;
-                
-                const currentUser = getCurrentUser();
-                const db = getDB();
-                
-                // Create new post
-                const newPost = {
-                    id: generateId(),
-                    userId: currentUser.id,
-                    title: title,
-                    category: category,
-                    description: description,
-                    image: image,
-                    createdAt: Date.now()
-                };
-                
-                // Add to database
-                db.posts.push(newPost);
-                saveDB(db);
-                
-                alert('Your talent has been uploaded successfully!');
-                window.location.href = 'dashboard.html';
-            });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Check if user is logged in and is a host
+        const currentUser = getCurrentUser();
+        if (!currentUser) {
+          window.location.href = "login.html";
+          return;
+        }
+
+        if (currentUser.role !== "host" && currentUser.role !== "admin") {
+          alert("Only hosts can upload content.");
+          window.location.href = "dashboard.html";
+          return;
+        }
+
+        // Set up logout functionality
+        document
+          .getElementById("logoutLink")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            logout();
+            window.location.href = "index.html";
+          });
+
+        // Image preview
+        const imageInput = document.getElementById("image");
+        const imagePreview = document.getElementById("imagePreview");
+        const noPreview = document.getElementById("noPreview");
+
+        imageInput.addEventListener("change", function () {
+          const file = this.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              imagePreview.src = e.target.result;
+              imagePreview.style.display = "block";
+              noPreview.style.display = "none";
+            };
+            reader.readAsDataURL(file);
+          }
         });
+
+        // Live preview for text fields
+        const titleInput = document.getElementById("title");
+        const categoryInput = document.getElementById("category");
+        const descriptionInput = document.getElementById("description");
+
+        const previewTitle = document.getElementById("previewTitle");
+        const previewCategory = document.getElementById("previewCategory");
+        const previewDescription =
+          document.getElementById("previewDescription");
+
+        titleInput.addEventListener("input", function () {
+          previewTitle.textContent = this.value || "Title will appear here";
+        });
+
+        categoryInput.addEventListener("change", function () {
+          previewCategory.textContent =
+            this.value || "Category will appear here";
+        });
+
+        descriptionInput.addEventListener("input", function () {
+          previewDescription.textContent =
+            this.value || "Description will appear here";
+        });
+
+        // Form submission
+        const uploadForm = document.getElementById("uploadForm");
+        uploadForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const title = titleInput.value;
+          const category = categoryInput.value;
+          const description = descriptionInput.value;
+          const image = imagePreview.src;
+
+          const currentUser = getCurrentUser();
+          const db = getDB();
+
+          // Create new post
+          const newPost = {
+            id: generateId(),
+            userId: currentUser.id,
+            title: title,
+            category: category,
+            description: description,
+            image: image,
+            createdAt: Date.now(),
+          };
+
+          // Add to database
+          db.posts.push(newPost);
+          saveDB(db);
+
+          alert("Your talent has been uploaded successfully!");
+          window.location.href = "dashboard.html";
+        });
+      });
     </script>
-</body>
+  </body>
 </html>

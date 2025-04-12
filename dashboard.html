@@ -1,133 +1,198 @@
 <!-- dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - Campus Talent Showcase</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <header>
-        <div class="logo">Campus Talent Showcase</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="spotlight.html">Spotlight</a></li>
-                <li><a href="#" id="logoutLink">Logout</a></li>
-                <li><a href="dashboard.html" class="active">Dashboard</a></li>
-            </ul>
-        </nav>
+      <div class="logo">
+        <svg class="logo-svg" viewBox="0 0 300 80">
+          <svg viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background shape -->
+            <rect x="5" y="15" width="290" height="50" rx="25" fill="#1a1a1a" />
+
+            <!-- Decorative accent elements -->
+            <circle cx="30" cy="40" r="18" fill="#6b48ff" opacity="0.8" />
+            <path
+              d="M 30 40 L 50 20 L 70 40 L 50 60 Z"
+              fill="#ff6b6b"
+              opacity="0.7"
+            />
+
+            <!-- Star accent -->
+            <path
+              d="M30,25 L33,33 L42,33 L35,38 L37,46 L30,42 L23,46 L25,38 L18,33 L27,33 Z"
+              fill="#ffd166"
+            />
+
+            <!-- Text elements -->
+            <text
+              x="80"
+              y="42"
+              font-family="'Playfair Display', serif"
+              font-size="22"
+              font-weight="700"
+              fill="#ffffff"
+            >
+              CAMPUS TALENT
+            </text>
+            <text
+              x="82"
+              y="60"
+              font-family="'Poppins', sans-serif"
+              font-size="12"
+              font-weight="400"
+              fill="#b3b3b3"
+            >
+              SHOWCASE
+            </text>
+
+            <!-- Creative elements to represent different art forms -->
+            <path
+              d="M260,30 C265,25 270,30 275,25 C280,20 285,25 290,20"
+              stroke="#4ecdc4"
+              stroke-width="2"
+              fill="none"
+            />
+            <rect x="265" y="40" width="4" height="15" rx="1" fill="#ff6b6b" />
+            <rect x="273" y="35" width="4" height="20" rx="1" fill="#8a5fff" />
+            <rect x="281" y="45" width="4" height="10" rx="1" fill="#ffd166" />
+          </svg>
+        </svg>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="spotlight.html">Spotlight</a></li>
+          <li><a href="#" id="logoutLink">Logout</a></li>
+          <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <section class="dashboard-container">
-            <h2>Welcome, <span id="userName">User</span>!</h2>
-            
-            <!-- Admin-only section -->
-            <div id="adminSection" style="display: none;">
-                <div class="dashboard-card">
-                    <h3>Admin Controls</h3>
-                    <p>Manage spotlights and user content</p>
-                    <a href="spotlight.html?manage=true" class="btn primary">Manage Spotlights</a>
-                </div>
+      <section class="dashboard-container">
+        <h2>Welcome, <span id="userName">User</span>!</h2>
+
+        <!-- Admin-only section -->
+        <div id="adminSection" style="display: none">
+          <div class="dashboard-card">
+            <h3>Admin Controls</h3>
+            <p>Manage spotlights and user content</p>
+            <a href="spotlight.html?manage=true" class="btn primary"
+              >Manage Spotlights</a
+            >
+          </div>
+        </div>
+
+        <!-- Host-only section -->
+        <div id="hostSection" style="display: none">
+          <div class="dashboard-card">
+            <h3>My Uploads</h3>
+            <p>Manage your content and upload new talents</p>
+            <a href="upload.html" class="btn primary">Upload New Content</a>
+          </div>
+
+          <div class="user-content">
+            <h3>Your Uploaded Content</h3>
+            <div id="userUploads" class="content-grid">
+              <!-- User uploads will be loaded here dynamically -->
+              <p class="loading">Loading your content...</p>
             </div>
-            
-            <!-- Host-only section -->
-            <div id="hostSection" style="display: none;">
-                <div class="dashboard-card">
-                    <h3>My Uploads</h3>
-                    <p>Manage your content and upload new talents</p>
-                    <a href="upload.html" class="btn primary">Upload New Content</a>
-                </div>
-                
-                <div class="user-content">
-                    <h3>Your Uploaded Content</h3>
-                    <div id="userUploads" class="content-grid">
-                        <!-- User uploads will be loaded here dynamically -->
-                        <p class="loading">Loading your content...</p>
-                    </div>
-                </div>
+          </div>
+        </div>
+
+        <!-- Guest-only section -->
+        <div id="guestSection" style="display: none">
+          <div class="dashboard-card">
+            <h3>Browse Talents</h3>
+            <p>Explore and appreciate the creative works of your peers</p>
+            <a href="gallery.html" class="btn primary">View Gallery</a>
+          </div>
+
+          <div class="liked-content">
+            <h3>Content You've Liked</h3>
+            <div id="likedContent" class="content-grid">
+              <!-- Liked content will be loaded here dynamically -->
+              <p class="loading">Loading liked content...</p>
             </div>
-            
-            <!-- Guest-only section -->
-            <div id="guestSection" style="display: none;">
-                <div class="dashboard-card">
-                    <h3>Browse Talents</h3>
-                    <p>Explore and appreciate the creative works of your peers</p>
-                    <a href="gallery.html" class="btn primary">View Gallery</a>
-                </div>
-                
-                <div class="liked-content">
-                    <h3>Content You've Liked</h3>
-                    <div id="likedContent" class="content-grid">
-                        <!-- Liked content will be loaded here dynamically -->
-                        <p class="loading">Loading liked content...</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Campus Talent Showcase. All rights reserved.</p>
+      <p>&copy; 2025 Campus Talent Showcase. All rights reserved.</p>
     </footer>
 
     <script src="js/storage.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/common.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if user is logged in
-            const currentUser = getCurrentUser();
-            if (!currentUser) {
-                window.location.href = 'login.html';
-                return;
-            }
-            
-            // Update user name display
-            document.getElementById('userName').textContent = currentUser.name;
-            
-            // Show appropriate sections based on user role
-            if (currentUser.role === 'admin') {
-                document.getElementById('adminSection').style.display = 'block';
-            } else if (currentUser.role === 'host') {
-                document.getElementById('hostSection').style.display = 'block';
-                loadUserUploads();
-            } else {
-                document.getElementById('guestSection').style.display = 'block';
-                loadLikedContent();
-            }
-            
-            // Set up logout functionality
-            document.getElementById('logoutLink').addEventListener('click', function(e) {
-                e.preventDefault();
-                logout();
-                window.location.href = 'index.html';
-            });
-        });
-        
-        function loadUserUploads() {
-            const uploadsContainer = document.getElementById('userUploads');
-            const currentUser = getCurrentUser();
-            const db = getDB();
-            
-            // Filter posts by current user
-            const userPosts = db.posts.filter(post => post.userId === currentUser.id);
-            
-            if (userPosts.length === 0) {
-                uploadsContainer.innerHTML = '<p>You haven\'t uploaded any content yet.</p>';
-                return;
-            }
-            
-            let html = '';
-            userPosts.forEach(post => {
-                const likesCount = db.likes.filter(like => like.postId === post.id).length;
-                const commentsCount = db.comments.filter(comment => comment.postId === post.id).length;
-                const isSpotlighted = db.spotlight.includes(post.id);
-                
-                html += `
+      document.addEventListener("DOMContentLoaded", function () {
+        // Check if user is logged in
+        const currentUser = getCurrentUser();
+        if (!currentUser) {
+          window.location.href = "login.html";
+          return;
+        }
+
+        // Update user name display
+        document.getElementById("userName").textContent = currentUser.name;
+
+        // Show appropriate sections based on user role
+        if (currentUser.role === "admin") {
+          document.getElementById("adminSection").style.display = "block";
+        } else if (currentUser.role === "host") {
+          document.getElementById("hostSection").style.display = "block";
+          loadUserUploads();
+        } else {
+          document.getElementById("guestSection").style.display = "block";
+          loadLikedContent();
+        }
+
+        // Set up logout functionality
+        document
+          .getElementById("logoutLink")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            logout();
+            window.location.href = "index.html";
+          });
+      });
+
+      function loadUserUploads() {
+        const uploadsContainer = document.getElementById("userUploads");
+        const currentUser = getCurrentUser();
+        const db = getDB();
+
+        // Filter posts by current user
+        const userPosts = db.posts.filter(
+          (post) => post.userId === currentUser.id
+        );
+
+        if (userPosts.length === 0) {
+          uploadsContainer.innerHTML =
+            "<p>You haven't uploaded any content yet.</p>";
+          return;
+        }
+
+        let html = "";
+        userPosts.forEach((post) => {
+          const likesCount = db.likes.filter(
+            (like) => like.postId === post.id
+          ).length;
+          const commentsCount = db.comments.filter(
+            (comment) => comment.postId === post.id
+          ).length;
+          const isSpotlighted = db.spotlight.includes(post.id);
+
+          html += `
                 <div class="content-card" data-id="${post.id}">
                     <div class="content-image">
                         <img src="${post.image}" alt="${post.title}">
@@ -139,49 +204,60 @@
                             <span>${likesCount} likes</span>
                             <span>${commentsCount} comments</span>
                         </div>
-                        ${isSpotlighted ? '<span class="spotlight-badge">In Spotlight</span>' : ''}
+                        ${
+                          isSpotlighted
+                            ? '<span class="spotlight-badge">In Spotlight</span>'
+                            : ""
+                        }
                     </div>
                 </div>
                 `;
-            });
-            
-            uploadsContainer.innerHTML = html;
+        });
+
+        uploadsContainer.innerHTML = html;
+      }
+
+      function loadLikedContent() {
+        const likedContainer = document.getElementById("likedContent");
+        const currentUser = getCurrentUser();
+        const db = getDB();
+
+        // Get posts that user has liked
+        const userLikes = db.likes.filter(
+          (like) => like.userId === currentUser.id
+        );
+        const likedPostIds = userLikes.map((like) => like.postId);
+        const likedPosts = db.posts.filter((post) =>
+          likedPostIds.includes(post.id)
+        );
+
+        if (likedPosts.length === 0) {
+          likedContainer.innerHTML =
+            "<p>You haven't liked any content yet.</p>";
+          return;
         }
-        
-        function loadLikedContent() {
-            const likedContainer = document.getElementById('likedContent');
-            const currentUser = getCurrentUser();
-            const db = getDB();
-            
-            // Get posts that user has liked
-            const userLikes = db.likes.filter(like => like.userId === currentUser.id);
-            const likedPostIds = userLikes.map(like => like.postId);
-            const likedPosts = db.posts.filter(post => likedPostIds.includes(post.id));
-            
-            if (likedPosts.length === 0) {
-                likedContainer.innerHTML = '<p>You haven\'t liked any content yet.</p>';
-                return;
-            }
-            
-            let html = '';
-            likedPosts.forEach(post => {
-                const user = db.users.find(u => u.id === post.userId);
-                html += `
+
+        let html = "";
+        likedPosts.forEach((post) => {
+          const user = db.users.find((u) => u.id === post.userId);
+          html += `
                 <div class="content-card" data-id="${post.id}">
                     <div class="content-image">
                         <img src="${post.image}" alt="${post.title}">
                     </div>
                     <div class="content-info">
                         <h4>${post.title}</h4>
-                        <p class="author">By ${user ? user.name : 'Unknown Artist'}</p>
+                        <p class="author">By ${
+                          user ? user.name : "Unknown Artist"
+                        }</p>
                         <p class="category">${post.category}</p>
                     </div>
                 </div>
                 `;
-            });
-            
-            likedContainer.innerHTML = html;
-        }
+        });
+
+        likedContainer.innerHTML = html;
+      }
     </script>
-</body>
+  </body>
 </html>

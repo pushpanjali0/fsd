@@ -1,105 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spotlight - Campus Talent Showcase</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <header>
-        <div class="logo">Campus Talent Showcase</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="spotlight.html" class="active">Spotlight</a></li>
-                <li><a href="login.html" id="loginLink">Login</a></li>
-                <li><a href="register.html" id="registerLink">Register</a></li>
-                <li><a href="#" id="logoutLink" style="display: none;">Logout</a></li>
-                <li><a href="dashboard.html" id="dashboardLink" style="display: none;">Dashboard</a></li>
-            </ul>
-        </nav>
+      <div class="logo">
+        <svg class="logo-svg" viewBox="0 0 300 80">
+          <svg viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background shape -->
+            <rect x="5" y="15" width="290" height="50" rx="25" fill="#1a1a1a" />
+
+            <!-- Decorative accent elements -->
+            <circle cx="30" cy="40" r="18" fill="#6b48ff" opacity="0.8" />
+            <path
+              d="M 30 40 L 50 20 L 70 40 L 50 60 Z"
+              fill="#ff6b6b"
+              opacity="0.7"
+            />
+
+            <!-- Star accent -->
+            <path
+              d="M30,25 L33,33 L42,33 L35,38 L37,46 L30,42 L23,46 L25,38 L18,33 L27,33 Z"
+              fill="#ffd166"
+            />
+
+            <!-- Text elements -->
+            <text
+              x="80"
+              y="42"
+              font-family="'Playfair Display', serif"
+              font-size="22"
+              font-weight="700"
+              fill="#ffffff"
+            >
+              CAMPUS TALENT
+            </text>
+            <text
+              x="82"
+              y="60"
+              font-family="'Poppins', sans-serif"
+              font-size="12"
+              font-weight="400"
+              fill="#b3b3b3"
+            >
+              SHOWCASE
+            </text>
+
+            <!-- Creative elements to represent different art forms -->
+            <path
+              d="M260,30 C265,25 270,30 275,25 C280,20 285,25 290,20"
+              stroke="#4ecdc4"
+              stroke-width="2"
+              fill="none"
+            />
+            <rect x="265" y="40" width="4" height="15" rx="1" fill="#ff6b6b" />
+            <rect x="273" y="35" width="4" height="20" rx="1" fill="#8a5fff" />
+            <rect x="281" y="45" width="4" height="10" rx="1" fill="#ffd166" />
+          </svg>
+        </svg>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="spotlight.html" class="active">Spotlight</a></li>
+          <li><a href="login.html" id="loginLink">Login</a></li>
+          <li><a href="register.html" id="registerLink">Register</a></li>
+          <li><a href="#" id="logoutLink" style="display: none">Logout</a></li>
+          <li>
+            <a href="dashboard.html" id="dashboardLink" style="display: none"
+              >Dashboard</a
+            >
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <section class="spotlight-container">
-            <h2>Weekly Spotlight</h2>
-            <p>Highlighting exceptional talents from our campus community</p>
-            
-            <!-- Admin-only section -->
-            <div id="adminControls" style="display: none;">
-                <h3>Manage Spotlight</h3>
-                <p>Select content to feature in the spotlight section</p>
-                
-                <div class="spotlight-management">
-                    <div id="spotlightSelector" class="content-grid">
-                        <!-- Content selection will be loaded here dynamically -->
-                        <p class="loading">Loading content...</p>
-                    </div>
-                    
-                    <div class="form-actions">
-                        <button id="saveSpotlightBtn" class="btn primary">Save Spotlight Selection</button>
-                    </div>
-                </div>
+      <section class="spotlight-container">
+        <h2>Weekly Spotlight</h2>
+        <p>Highlighting exceptional talents from our campus community</p>
+
+        <!-- Admin-only section -->
+        <div id="adminControls" style="display: none">
+          <h3>Manage Spotlight</h3>
+          <p>Select content to feature in the spotlight section</p>
+
+          <div class="spotlight-management">
+            <div id="spotlightSelector" class="content-grid">
+              <!-- Content selection will be loaded here dynamically -->
+              <p class="loading">Loading content...</p>
             </div>
-            
-            <!-- Spotlight display (for all users) -->
-            <div id="spotlightDisplay" class="spotlight-grid">
-                <!-- Spotlight items will be loaded here dynamically -->
-                <p class="loading">Loading spotlight...</p>
+
+            <div class="form-actions">
+              <button id="saveSpotlightBtn" class="btn primary">
+                Save Spotlight Selection
+              </button>
             </div>
-        </section>
+          </div>
+        </div>
+
+        <!-- Spotlight display (for all users) -->
+        <div id="spotlightDisplay" class="spotlight-grid">
+          <!-- Spotlight items will be loaded here dynamically -->
+          <p class="loading">Loading spotlight...</p>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Campus Talent Showcase. All rights reserved.</p>
+      <p>&copy; 2025 Campus Talent Showcase. All rights reserved.</p>
     </footer>
 
     <script src="js/storage.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/common.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            updateNavigation();
-            
-            const currentUser = getCurrentUser();
-            const isAdmin = currentUser && currentUser.role === 'admin';
-            const urlParams = new URLSearchParams(window.location.search);
-            const isManageMode = urlParams.get('manage') === 'true';
-            
-            // Show admin controls if appropriate
-            if (isAdmin && isManageMode) {
-                document.getElementById('adminControls').style.display = 'block';
-                loadSpotlightSelector();
-                
-                // Set up save button
-                document.getElementById('saveSpotlightBtn').addEventListener('click', saveSpotlightSelection);
-            }
-            
-            // Load spotlight content for display
-            loadSpotlightDisplay();
-        });
-        
-        function loadSpotlightSelector() {
-            const selectorContainer = document.getElementById('spotlightSelector');
-            const db = getDB();
-            
-            if (db.posts.length === 0) {
-                selectorContainer.innerHTML = '<p>No content available to spotlight.</p>';
-                return;
-            }
-            
-            let html = '';
-            db.posts.forEach(post => {
-                const user = db.users.find(u => u.id === post.userId);
-                const isSpotlighted = db.spotlight.includes(post.id);
-                
-                html += `
-                <div class="content-card selector-card ${isSpotlighted ? 'selected' : ''}">
+      document.addEventListener("DOMContentLoaded", function () {
+        updateNavigation();
+
+        const currentUser = getCurrentUser();
+        const isAdmin = currentUser && currentUser.role === "admin";
+        const urlParams = new URLSearchParams(window.location.search);
+        const isManageMode = urlParams.get("manage") === "true";
+
+        // Show admin controls if appropriate
+        if (isAdmin && isManageMode) {
+          document.getElementById("adminControls").style.display = "block";
+          loadSpotlightSelector();
+
+          // Set up save button
+          document
+            .getElementById("saveSpotlightBtn")
+            .addEventListener("click", saveSpotlightSelection);
+        }
+
+        // Load spotlight content for display
+        loadSpotlightDisplay();
+      });
+
+      function loadSpotlightSelector() {
+        const selectorContainer = document.getElementById("spotlightSelector");
+        const db = getDB();
+
+        if (db.posts.length === 0) {
+          selectorContainer.innerHTML =
+            "<p>No content available to spotlight.</p>";
+          return;
+        }
+
+        let html = "";
+        db.posts.forEach((post) => {
+          const user = db.users.find((u) => u.id === post.userId);
+          const isSpotlighted = db.spotlight.includes(post.id);
+
+          html += `
+                <div class="content-card selector-card ${
+                  isSpotlighted ? "selected" : ""
+                }">
                     <div class="select-checkbox">
-                        <input type="checkbox" id="select-${post.id}" class="spotlight-checkbox" 
-                            data-post-id="${post.id}" ${isSpotlighted ? 'checked' : ''}>
+                        <input type="checkbox" id="select-${
+                          post.id
+                        }" class="spotlight-checkbox" 
+                            data-post-id="${post.id}" ${
+            isSpotlighted ? "checked" : ""
+          }>
                         <label for="select-${post.id}"></label>
                     </div>
                     <div class="content-image">
@@ -107,62 +176,71 @@
                     </div>
                     <div class="content-info">
                         <h4>${post.title}</h4>
-                        <p class="author">By ${user ? user.name : 'Unknown Artist'}</p>
+                        <p class="author">By ${
+                          user ? user.name : "Unknown Artist"
+                        }</p>
                         <p class="category">${post.category}</p>
                     </div>
                 </div>
                 `;
-            });
-            
-            selectorContainer.innerHTML = html;
+        });
+
+        selectorContainer.innerHTML = html;
+      }
+
+      function saveSpotlightSelection() {
+        const checkboxes = document.querySelectorAll(".spotlight-checkbox");
+        const db = getDB();
+
+        // Clear current spotlight
+        db.spotlight = [];
+
+        // Add selected posts to spotlight
+        checkboxes.forEach((checkbox) => {
+          if (checkbox.checked) {
+            db.spotlight.push(checkbox.getAttribute("data-post-id"));
+          }
+        });
+
+        saveDB(db);
+        alert("Spotlight selections have been saved!");
+
+        // Refresh the display
+        loadSpotlightDisplay();
+      }
+
+      function loadSpotlightDisplay() {
+        const spotlightDisplay = document.getElementById("spotlightDisplay");
+        const db = getDB();
+
+        // Filter posts that are in spotlight
+        const spotlightPosts = db.posts.filter((post) =>
+          db.spotlight.includes(post.id)
+        );
+
+        if (spotlightPosts.length === 0) {
+          spotlightDisplay.innerHTML =
+            "<p>No spotlights currently featured.</p>";
+          return;
         }
-        
-        function saveSpotlightSelection() {
-            const checkboxes = document.querySelectorAll('.spotlight-checkbox');
-            const db = getDB();
-            
-            // Clear current spotlight
-            db.spotlight = [];
-            
-            // Add selected posts to spotlight
-            checkboxes.forEach(checkbox => {
-                if (checkbox.checked) {
-                    db.spotlight.push(checkbox.getAttribute('data-post-id'));
-                }
-            });
-            
-            saveDB(db);
-            alert('Spotlight selections have been saved!');
-            
-            // Refresh the display
-            loadSpotlightDisplay();
-        }
-        
-        function loadSpotlightDisplay() {
-            const spotlightDisplay = document.getElementById('spotlightDisplay');
-            const db = getDB();
-            
-            // Filter posts that are in spotlight
-            const spotlightPosts = db.posts.filter(post => db.spotlight.includes(post.id));
-            
-            if (spotlightPosts.length === 0) {
-                spotlightDisplay.innerHTML = '<p>No spotlights currently featured.</p>';
-                return;
-            }
-            
-            let html = '';
-            spotlightPosts.forEach(post => {
-                const user = db.users.find(u => u.id === post.userId);
-                const likesCount = db.likes.filter(like => like.postId === post.id).length;
-                
-                html += `
+
+        let html = "";
+        spotlightPosts.forEach((post) => {
+          const user = db.users.find((u) => u.id === post.userId);
+          const likesCount = db.likes.filter(
+            (like) => like.postId === post.id
+          ).length;
+
+          html += `
                 <div class="spotlight-item">
                     <div class="spotlight-image">
                         <img src="${post.image}" alt="${post.title}">
                     </div>
                     <div class="spotlight-info">
                         <h3>${post.title}</h3>
-                        <p class="author">By ${user ? user.name : 'Unknown Artist'}</p>
+                        <p class="author">By ${
+                          user ? user.name : "Unknown Artist"
+                        }</p>
                         <p class="category">${post.category}</p>
                         <p class="description">${post.description}</p>
                         <div class="spotlight-stats">
@@ -171,10 +249,10 @@
                     </div>
                 </div>
                 `;
-            });
-            
-            spotlightDisplay.innerHTML = html;
-        }
+        });
+
+        spotlightDisplay.innerHTML = html;
+      }
     </script>
-</body>
+  </body>
 </html>
